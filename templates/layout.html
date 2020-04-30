@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <title>ImageR</title>
+    {% block links %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='page.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='navstyle.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='bg.png') }}" type="image/x-icon">
+</head>
+<body>
+<nav class="nav">
+    <h1 class="logo"><a id="index" href="/">Image Restoration</a></h1>
+    <ul class="main-nav">
+        <li><a id="denoise" href="/denoise">Noise 🧼</a></li>
+        <li><a id="superresolution" href="/superresolution">Resolution 🔎</a></li>
+        <li><a id="arti" href="/arti">Compression Artifacts 🧹</a></li>
+        <li><a id="inpaint" href="/inpaint">Image Inpainting 🎨</a></li>
+
+    </ul>
+</nav>
+<script src="{{ url_for('static', filename='upload.js') }}"></script>
+<div class="grid-top">
+    <form class="grid-form" id='imgForm' method='POST' enctype="multipart/form-data"
+          action="/image/{% block model %}{% endblock %}" name="imgForm">
+        {% block label %}
+        {% endblock %}
+        <label class='btn'>
+            <span>Select image</span>
+            <input type="file" class='form-control-file' id="file" name="file"/>
+        </label>
+        <label class='btns d-none'>
+            <span>{% block name %}{% endblock %}</span>
+            <input type="button" class='form-control-file' id="submit"/>
+        </label>
+    </form>
+
+
+    <div class='grid-show '>
+        <div class='grid-input d-none'>
+            <img id='imgInput' class="img-fluid" src=""/>
+            {% block inpaint %}{% endblock %}
+        </div>
+        <div class='grid-output d-none'>
+            <img id='imgOutput' class="img-fluid" src=""/>
+            <a class="dl" download="output.png"><span>Download</span></a>
+        </div>
+
+        <div class='loading d-none'>⏳</div>
+
+    </div>
+</div>
+
+</body>
+</html>

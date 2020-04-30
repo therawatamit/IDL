@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block links %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='strengthlist.css') }}">
+{% endblock %}
+{% block name %}Denoise!{% endblock %}
+{% block model %}superresolution{% endblock %}
+{% block label %}
+    <div class="option" tabindex="1">
+        <input class="options-select" name="strength" type="radio" id="opt1" value="15" checked>
+        <label for="opt1" class="select">Low</label>
+        <input class="options-select" name="strength" type="radio" id="opt2" value="25">
+        <label for="opt2" class="select">Medium</label>
+        <input class="options-select" name="strength" type="radio" id="opt3" value="50">
+        <label for="opt3" class="select">High</label>
+    </div>
+{% endblock %}

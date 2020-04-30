@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block links %}
+{% endblock %}
+{% block name %}Fill!{% endblock %}
+{% block model %}inpaint{% endblock %}
+{% block inpaint %}
+    <canvas id="canvas"></canvas>
+    <span id="clear" class="dl">Clear mask</span>
+    <img id="canvasimg" style="display: none;" src="">
+    <script src="{{ url_for('static', filename='canvas.js') }}"></script>
+{% endblock %}

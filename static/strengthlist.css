@@ -1,0 +1,73 @@
+.option {
+    grid-area: opt;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: #28AADC;
+}
+
+.select {
+    padding: 0 30px 0 10px;
+    min-height: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: #E5E5E5;
+    border-top: #222 solid 1px;
+    position: absolute;
+    top: 0;
+    pointer-events: none;
+    order: 2;
+    z-index: 1;
+    transition: background .4s ease-in-out;
+    box-sizing: border-box;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.select:hover {
+    background: #e56271;
+}
+
+.option:focus .select {
+    position: relative;
+    pointer-events: all;
+}
+
+input {
+    opacity: 0;
+    position: absolute;
+    left: -99999em;
+}
+
+input:checked + label {
+    order: 1;
+    z-index: 2;
+    background: #ff595c;
+    border-top: none;
+    position: relative;
+    color: white;
+}
+
+input:checked + label:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white;
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 3px);
+    pointer-events: none;
+    z-index: 3;
+}
+
+input:checked + label:before {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 30px;
+    content: '';
+    background: #050505;
+}
